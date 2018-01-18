@@ -48,12 +48,29 @@
     </Modal>
     <Modal v-model="editPermissionModal"
            title="管理角色权限"
+           width="900"
            ok-text="OK"
            cancel-text="Cancel"
            @on-ok="editRole">
-      <div class="modal-cont">
+      <Row class="modal-cont">
+        <Col span="10">
+          <Card>
+            <h2 slot="title">
+              所有权限
+            </h2>
+            <Input v-model="searchPermissionAll">
+              <Button slot="append" icon="ios-search"></Button>
+            </Input>
+            <ul></ul>
+          </Card>
+        </Col>
+        <Col span="4">
 
-      </div>
+        </Col>
+        <Col span="10">
+
+        </Col>
+      </Row>
     </Modal>
   </div>
 </template>
@@ -117,7 +134,7 @@
                   },
                   on: {
                     click: () => {
-                      this.deleteRoles(this.roles[params.index].id)
+                      this.editPermissionModal = true
                     }
                   }
                 }, '权限管理')
@@ -135,7 +152,7 @@
                 },
                 on: {
                   click: () => {
-                    this.deleteRoles(this.roles[params.index].id)
+                    this.editMenuModal = true
                   }
                 }
               }, '菜单管理')
